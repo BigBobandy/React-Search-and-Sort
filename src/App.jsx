@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import SearchInput from "./components/SearchInput";
 
 function App() {
   const [size, setSize] = useState(11);
@@ -8,6 +9,7 @@ function App() {
   return (
     <div>
       <h1>Search & Sort Showdown: Comparing Algorithms</h1>
+      <SearchInput></SearchInput>
     </div>
   );
 }
