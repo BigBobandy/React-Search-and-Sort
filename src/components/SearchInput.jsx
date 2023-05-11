@@ -27,11 +27,12 @@ function SearchInput(props) {
       <input
         type="text"
         className="search-bar"
-        placeholder="Search..."
+        placeholder="Enter a number..."
         value={inputValue}
         onChange={handleChange}
       />
       <button type="submit" className="search-icon">
+        Search
         <FontAwesomeIcon icon={faSearch} />
       </button>
     </form>

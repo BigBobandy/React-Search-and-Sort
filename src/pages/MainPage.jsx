@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import List from "../components/List";
 import SearchInput from "../components/SearchInput";
+import { populateArray } from "../helpers/helperFunctions";
 
 function MainPage() {
   const [size, setSize] = useState(11);
   const [array, setArray] = useState([size]);
   const [searchTerm, setSearchTerm] = useState("");
 
+  useEffect(() => {
+    setArray(populateArray([], size));
+  }, [size]);
+
   console.log(array);
+  console.log(searchTerm);
 
   return (
     <div>
