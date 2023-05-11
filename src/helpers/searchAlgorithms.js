@@ -24,3 +24,23 @@ export function binarySearch(array, size, input) {
 
   return { found, searches };
 }
+
+export function sequentialSearch(array, size, input) {
+  let found = false;
+  let searches = 0;
+  let i = 0;
+  const searchType = "Sequential";
+
+  // Keep looking for the input value until it's found or we've reached the end of the array
+  while (found === false && i <= size - 1)
+    // Check if the current array element matches the input value
+    if (array[i] == input) {
+      found = true;
+      searches += 1;
+      break;
+    } else {
+      // Move on to the next array element
+      i++;
+      searches += 1;
+    }
+}
