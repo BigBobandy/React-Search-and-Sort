@@ -8,6 +8,7 @@ export function populateArray(array, size) {
 
     array[i] = randomNum;
   }
+  return array;
 }
 
 // Generate a random number between 1 and 99
