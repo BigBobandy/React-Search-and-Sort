@@ -1,8 +1,10 @@
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
+import { binarySearch, sequentialSearch } from "../helpers/searchAlgorithms";
+import { bubbleSort, insertionSort } from "../helpers/sortAlgorithms";
 
-function SearchInput(props) {
+function SearchInput({ setSearchTerm, array, size, setSearchResults }) {
   //Create a state variable to store the input value
   const [inputValue, setInputValue] = useState("");
 
@@ -10,6 +12,20 @@ function SearchInput(props) {
   const handleSubmit = (e) => {
     //Prevents the page from reloading on submission
     e.preventDefault();
+
+    if (inputValue.trim()) {
+      setSearchTerm(inputValue);
+
+      const binaryResult = binarySearch(array, size, inputValue);
+      const sequentialResult = sequentialSearch(array, size, inputValue);
+
+      // Passing the search results to the setSearchResults function
+      setSearchResults({
+        binaryResult: { ...binaryResult, inputValue },
+        sequentialResult: { ...sequentialResult, inputValue },
+      });
+    }
+
     //Clears input field after search
     setInputValue("");
   };
@@ -18,7 +34,7 @@ function SearchInput(props) {
   const handleChange = (e) => {
     //Update the inputValue state with the new input value
     setInputValue(e.target.value);
-    props.setSearchTerm(e.target.value); // Set the searchTerm in the parent component
+    setSearchTerm(e.target.value); // Set the searchTerm in the parent component
   };
 
   //Return the JSX markup for the Search component

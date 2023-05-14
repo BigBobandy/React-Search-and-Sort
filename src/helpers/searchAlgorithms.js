@@ -29,7 +29,6 @@ export function sequentialSearch(array, size, input) {
   let found = false;
   let searches = 0;
   let i = 0;
-  const searchType = "Sequential";
 
   // Keep looking for the input value until it's found or we've reached the end of the array
   while (found === false && i <= size - 1)
@@ -43,4 +42,6 @@ export function sequentialSearch(array, size, input) {
       i++;
       searches += 1;
     }
+
+  return { found, searches };
 }

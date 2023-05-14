@@ -1,5 +1,5 @@
 export function bubbleSort(array, size) {
-  maxElement = size - 1;
+  let maxElement = size - 1;
   // Iterate through the array, comparing adjacent elements
   for (let i = 0; i < maxElement; i++) {
     // Iterate through the unsorted part of the array
@@ -14,9 +14,10 @@ export function bubbleSort(array, size) {
   }
 }
 
-export function insertionSort(array) {
+export function insertionSort(array, size) {
+  let maxElement = size - 1;
   // Iterate through the array starting from the second element (index 1)
-  for (let i = 1; i < array.length; i++) {
+  for (let i = 1; i < maxElement; i++) {
     // Store the current element as the key
     let key = array[i];
     // Set j to the index before the current element (i - 1)
