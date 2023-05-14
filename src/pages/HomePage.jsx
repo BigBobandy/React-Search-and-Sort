@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function HomePage() {
   return (
-    <>
+    <div className="main-container">
       <h1>Search & Sort Showdown: Comparing Algorithms</h1>
       <h3>
         Dive into the world of search and sort algorithms by comparing binary
@@ -15,7 +15,7 @@ function HomePage() {
       <Link to="/main">
         <button className="begin-btn">Begin</button>
       </Link>
-    </>
+    </div>
   );
 }
 

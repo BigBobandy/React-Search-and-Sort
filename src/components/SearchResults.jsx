@@ -1,8 +1,6 @@
 function SearchResult({ searchResults }) {
   let result = [];
 
-  console.log(searchResults);
-
   if (searchResults) {
     // Deconstructing the searchResults object
     const { binaryResult, sequentialResult } = searchResults;
@@ -19,6 +17,7 @@ function SearchResult({ searchResults }) {
     }
 
     // Setting the search results for the sequential search method
+    // This if statement checks if it only took 1 search and sets the result text to be grammatically correct in that case
     if (searchResults.found === true && sequentialResult.searches === 1) {
       result.push(
         `It took ${sequentialResult.searches} search using the ${sequentialResult.type} search algorithm to find ${sequentialResult.inputValue}. `
@@ -34,10 +33,6 @@ function SearchResult({ searchResults }) {
         "The number you entered couldn't be found. Please enter a number from the array above."
       );
     }
-
-    console.log(binaryResult);
-    console.log(sequentialResult);
-    console.log(result);
   }
 
   return (

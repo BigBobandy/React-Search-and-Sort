@@ -11,8 +11,6 @@ export function binarySearch(array, size, input) {
 
   arrayCopy.sort((a, b) => a - b);
 
-  console.log(`"Original:" ${array} "Copy:" ${arrayCopy}`);
-
   while (start <= end) {
     let mid = Math.floor((start + end) / 2);
 
