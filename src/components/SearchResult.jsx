@@ -1,41 +1,43 @@
 function SearchResult({ searchResults }) {
   let result = [];
-  let type;
 
   console.log(searchResults);
 
   if (searchResults) {
+    // Deconstructing the searchResults object
     const { binaryResult, sequentialResult } = searchResults;
 
+    // Setting the search results for the binary search method
     if (binaryResult.found === true && binaryResult.searches === 1) {
-      type = "Binary";
       result.push(
-        `It took ${binaryResult.searches} search using the ${type} search algorithm to find ${binaryResult.inputValue}.`
+        `It took ${binaryResult.searches} search using the ${binaryResult.type} search algorithm to find ${binaryResult.inputValue}. `
       );
     } else if (binaryResult.found === true) {
-      type = "Binary";
       result.push(
-        `It took ${binaryResult.searches} searches using the ${type} search algorithm to find ${binaryResult.inputValue}.`
+        `It took ${binaryResult.searches} searches using the ${binaryResult.type} search algorithm to find ${binaryResult.inputValue}.`
       );
     }
 
-    if (sequentialResult.found === true && sequentialResult.searches === 1) {
-      type = "Sequential";
+    // Setting the search results for the sequential search method
+    if (searchResults.found === true && sequentialResult.searches === 1) {
       result.push(
-        `It took ${sequentialResult.searches} search using the ${type} search algorithm to find ${sequentialResult.inputValue}.`
+        `It took ${sequentialResult.searches} search using the ${sequentialResult.type} search algorithm to find ${sequentialResult.inputValue}. `
       );
     } else if (sequentialResult.found === true) {
-      type = "Sequential";
       result.push(
-        `It took ${sequentialResult.searches} searches using the ${type} search algorithm to find ${sequentialResult.inputValue}.`
+        `It took ${sequentialResult.searches} searches using the ${sequentialResult.type} search algorithm to find ${sequentialResult.inputValue}.`
       );
     }
 
     if (!binaryResult.found && !sequentialResult.found) {
       result.push(
-        "The number you entered could not be found. Please enter a number from the array above."
+        "The number you entered couldn't be found. Please enter a number from the array above."
       );
     }
+
+    console.log(binaryResult);
+    console.log(sequentialResult);
+    console.log(result);
   }
 
   return (

@@ -3,17 +3,24 @@ export function binarySearch(array, size, input) {
   let end = size - 1;
   let found = false;
   let searches = 0;
+  const type = "Binary";
 
-  array.sort((a, b) => a - b);
+  // Creating a copy of the array so it can be sorted and then searched without sorting the original array
+  // This is necessary because the binarySearch requires the array to be sorted in order to work
+  let arrayCopy = [...array];
+
+  arrayCopy.sort((a, b) => a - b);
+
+  console.log(`"Original:" ${array} "Copy:" ${arrayCopy}`);
 
   while (start <= end) {
     let mid = Math.floor((start + end) / 2);
 
-    if (array[mid] === input) {
+    if (arrayCopy[mid] === Number(input)) {
       searches += 1;
       found = true;
       break;
-    } else if (array[mid] < input) {
+    } else if (arrayCopy[mid] < Number(input)) {
       searches += 1;
       start = mid + 1;
     } else {
@@ -22,13 +29,14 @@ export function binarySearch(array, size, input) {
     }
   }
 
-  return { found, searches };
+  return { found, searches, type };
 }
 
 export function sequentialSearch(array, size, input) {
   let found = false;
   let searches = 0;
   let i = 0;
+  const type = "Sequential";
 
   // Keep looking for the input value until it's found or we've reached the end of the array
   while (found === false && i <= size - 1)
@@ -43,5 +51,5 @@ export function sequentialSearch(array, size, input) {
       searches += 1;
     }
 
-  return { found, searches };
+  return { found, searches, type };
 }

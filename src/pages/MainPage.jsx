@@ -4,31 +4,17 @@ import SearchInput from "../components/SearchInput";
 import SearchResult from "../components/SearchResult";
 import SortResult from "../components/SortResult";
 import { populateArray } from "../helpers/helperFunctions";
-import { bubbleSort, insertionSort } from "../helpers/sortAlgorithms";
 
 function MainPage() {
   const [size, setSize] = useState(21);
   const [array, setArray] = useState([size]);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState(null);
-  const [sortResults, setSortResults] = useState({
-    bubbleSort: null,
-    insertionSort: null,
-  });
+  const [sortResults, setSortResults] = useState(null);
 
   useEffect(() => {
     setArray(populateArray([], size));
   }, [size]);
-
-  function sort() {
-    const bubbleResult = bubbleSort(array, size);
-    const insertionResult = insertionSort(array, size);
-
-    setSortResults({
-      bubbleSort: bubbleResult,
-      insertionSort: insertionResult,
-    });
-  }
 
   return (
     <div className="main-container">

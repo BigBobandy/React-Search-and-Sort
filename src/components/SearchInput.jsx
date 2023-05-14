@@ -5,15 +5,16 @@ import { binarySearch, sequentialSearch } from "../helpers/searchAlgorithms";
 import { bubbleSort, insertionSort } from "../helpers/sortAlgorithms";
 
 function SearchInput({ setSearchTerm, array, size, setSearchResults }) {
-  //Create a state variable to store the input value
   const [inputValue, setInputValue] = useState("");
+  const [error, setError] = useState("");
 
-  //Function to handle form submission
   const handleSubmit = (e) => {
-    //Prevents the page from reloading on submission
     e.preventDefault();
 
-    if (inputValue.trim()) {
+    if (!inputValue.trim()) {
+      setError("Please enter a number before searching.");
+    } else {
+      setError(""); // clear the error message
       setSearchTerm(inputValue);
 
       const binaryResult = binarySearch(array, size, inputValue);
@@ -24,20 +25,20 @@ function SearchInput({ setSearchTerm, array, size, setSearchResults }) {
         binaryResult: { ...binaryResult, inputValue },
         sequentialResult: { ...sequentialResult, inputValue },
       });
+
+      //Clears input field after search
+      setInputValue("");
     }
-
-    //Clears input field after search
-    setInputValue("");
   };
 
-  //Function that handles changes in the input value
   const handleChange = (e) => {
-    //Update the inputValue state with the new input value
-    setInputValue(e.target.value);
-    setSearchTerm(e.target.value); // Set the searchTerm in the parent component
+    // Only update the inputValue state if the new input value is a number and is less than or equal to 2 digits
+    if (!isNaN(e.target.value) && e.target.value.length <= 2) {
+      setInputValue(e.target.value);
+      setSearchTerm(e.target.value); // Set the searchTerm in the parent component
+    }
   };
 
-  //Return the JSX markup for the Search component
   return (
     <form className="search-wrapper" onSubmit={handleSubmit}>
       <input
@@ -51,6 +52,7 @@ function SearchInput({ setSearchTerm, array, size, setSearchResults }) {
         Search
         <FontAwesomeIcon icon={faSearch} />
       </button>
+      {error && <p className="error-message">{error}</p>}
     </form>
   );
 }
