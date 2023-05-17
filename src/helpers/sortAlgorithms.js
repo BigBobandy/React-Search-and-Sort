@@ -1,4 +1,6 @@
 export function bubbleSort(array, size) {
+  // Wrapping the sort functions in a promise to ensure that the sort completes fully before the timing measurement ends
+  // This gives a more accurate measure of how long the sorting takes
   return new Promise((resolve) => {
     let maxElement = size - 1;
     // Iterate through the array, comparing adjacent elements

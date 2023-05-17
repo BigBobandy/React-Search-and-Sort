@@ -1,0 +1,76 @@
+.main-container {
+  background-color: var(--background-color);
+  border: 6px solid var(--primary-color);
+  border-radius: 2px;
+  padding: 5%;
+}
+
+.search-bar {
+  font-family: inherit;
+  width: 150px;
+  padding: 5px;
+  margin: 5px;
+  font-size: 15px;
+  border-radius: 2px;
+  border: 2px solid var(--primary-darker);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1);
+  margin-right: 0.5px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 100px;
+  list-style-type: none;
+  font-weight: bold;
+}
+
+button {
+  text-align: center;
+  color: white;
+  font-family: inherit;
+  background-color: var(--primary-color);
+  border: 2px solid var(--primary-darker);
+  border-radius: 2px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1);
+  font-size: 15px;
+  padding: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.button:active {
+  transform: scale(0.98);
+}
+
+.button:focus {
+  outline: 0;
+}
+
+.button:hover {
+  background-color: var(--primary-darker);
+}
+
+select {
+  user-select: none;
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 15px;
+  color: white;
+  background-color: var(--primary-color);
+  border: 2px solid var(--primary-darker);
+  border-radius: 10px;
+  padding: 5px;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+select:hover {
+  background-color: var(--primary-darker);
+}
+
+option {
+  font-family: inherit;
+  font-weight: bold;
+}

@@ -1,14 +1,28 @@
 export function populateArray(array, size) {
+  // Copy the input array to avoid mutation
+  let newArray = [...array];
+
   for (let i = 0; i < size - 1; i++) {
     let randomNum = random();
 
-    while (array.includes(randomNum)) {
+    // Check if the random number already exists in the array to prevent duplicates in the array
+    while (newArray.includes(randomNum)) {
+      // Generate a new random number if it already exists in the array
       randomNum = random();
+      let attempts;
+
+      // If we've tried to find a unique number too many times, break out of the loop
+      if (attempts > 10000) {
+        break;
+      }
+      console.log(attempts);
+      attempts++;
     }
 
-    array[i] = randomNum;
+    // Add the unique random number to the array
+    newArray[i] = randomNum;
   }
-  return array;
+  return newArray;
 }
 
 // Generate a random number between 1 and 99
