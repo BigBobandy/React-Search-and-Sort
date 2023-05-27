@@ -10,7 +10,6 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/main" element={<MainPage />} />
-        {/* Add more Route components for each page */}
       </Routes>
     </Router>
   );
